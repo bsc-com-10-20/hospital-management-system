@@ -1,0 +1,35 @@
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { HrmService } from './hrm.service';
+import { Hrm } from './entities/hrm.entity';
+
+
+@Controller('hrm')
+export class hrmController {
+  hrmRepository: any;
+  hrmService: any;
+  constructor(private readonly hrmsService: HrmService) {}
+
+  @Post()
+  async createHrm(@Body() newHrm: Hrm): Promise<Hrm> {
+    return this.hrmService.createHrm(newHrm);
+  }
+
+  @Get(':id')
+  async getHrmById(@Param('id') id: number): Promise<Hrm> {
+    return this.hrmService.getHrmById(id);
+  }
+  
+  @Patch(':id')
+  async updateHrm(@Param('id') id: number,
+  @Body() newHrm: Hrm,
+  ): Promise<Hrm>{
+    return this.hrmsService.updateHrm(id, newHrm);
+  }
+
+  @Delete(':id')
+  async deleteHrm(@Param('id') id: number): Promise<void> {
+    return this.hrmService.deleteHrm(id);
+  }
+
+
+}
