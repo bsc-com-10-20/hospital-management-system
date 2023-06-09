@@ -13,7 +13,9 @@ export class DoctorsService {
   
 
   async createDoctor( newDoctor: Doctor): Promise<Doctor> {
-    const doctor = this.doctorRepository.create(newDoctor);
+    const doctor = this.doctorRepository.create({
+      ...newDoctor 
+    });
     return this.doctorRepository.save(doctor);
   
   }

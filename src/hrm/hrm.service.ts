@@ -14,7 +14,8 @@ export class HrmService {
 
   
   async createHrm( newHrm: Hrm): Promise<Hrm> {
-    const Hrm = this.hrmRepository.create(newHrm);
+    const Hrm = this.hrmRepository.create({
+      ...newHrm});
     return this.hrmRepository.save(Hrm);
   
   }

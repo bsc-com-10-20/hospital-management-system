@@ -1,16 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Receptionist } from './entities/receptionist.entity';
+import { Repository } from 'typeorm';
 
  
 
  @Injectable()
  export class ReceptionistService {
-   receptionistRepository: any;
-   
+   constructor( @InjectRepository(Receptionist)
+   private readonly receptionistRepository: Repository<Receptionist>,){}
+
   async createReceptionist( newReceptionist: Receptionist): Promise<Receptionist> {
-    const receptionist = this.receptionistRepository.create(newReceptionist);
-    return this.receptionistRepository.save(Receptionist);
+    const receptionist = this.receptionistRepository.create({
+      ...newReceptionist});
+
+    return this.receptionistRepository.save(receptionist);
  
 
   }

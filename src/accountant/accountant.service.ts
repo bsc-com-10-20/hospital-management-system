@@ -14,8 +14,10 @@ import { Accountant } from './entities/accountant.entity';
    ){}
  
 
-   async createAccountant( newAccountant: Accountant): Promise<Accountant> {
-    const Accountant = this.accountantRepository.create(newAccountant);
+   async createAccountant( newAccountant: Accountant) {
+    const Accountant = this.accountantRepository.create({
+      ...newAccountant,
+    });
     return this.accountantRepository.save(Accountant);
    }
       

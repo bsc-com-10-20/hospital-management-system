@@ -5,26 +5,25 @@ import { Patient } from './entities/patient.entity';
 
 @Controller('patients')
 export class PatientsController {
-  patientRepository: any;
-  patientsService: any;
+ 
   constructor(private readonly patientService: PatientService) {}
 
   @Post()
   async createPatient(@Body() newPatient: Patient): Promise<Patient>{
-    return this.patientsService.createPatient(newPatient);
+    return this.patientService.createPatient(newPatient);
   }
 
  
   @Get(':id')
   async getPatientById(@Param('id') id: number) {
-    return this.patientsService.getPatientById(+id);
+    return this.patientService.getPatientById(+id);
  }
 
  @Patch(':id')
  async updatePatient(@Param('id') id: number,
  @Body() newPatient: Patient,
  ): Promise<Patient>{
-   return this.patientsService.updatePatient(id, newPatient);
+   return this.patientService.updatePatient(id, newPatient);
  }
  @Delete(':id')
  async deletePatient(@Param('id') id: number): Promise<void> {

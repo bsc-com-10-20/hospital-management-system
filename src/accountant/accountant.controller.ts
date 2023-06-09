@@ -5,7 +5,7 @@ import { AccountantsService } from './accountant.service';
 
  @Controller('accountant')
  export class AccountantController {
-   accountantRepository: any;
+   
    constructor(private readonly accountantsService: AccountantsService) {}
  
    @Post()

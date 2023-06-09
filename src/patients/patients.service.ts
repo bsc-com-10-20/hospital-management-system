@@ -6,7 +6,7 @@ import { Patient } from './entities/patient.entity';
 
 @Injectable()
 export class PatientService {
-  patientsRepository: any;
+  
 
   
 
@@ -15,10 +15,13 @@ export class PatientService {
     private readonly patientRepository: Repository<Patient>,
   ){}
 
-  async createPatient( newPatient: Patient): Promise<Patient> {
-    const patient = this.patientRepository.create(newPatient);
-     return this.patientsRepository.save(Patient);
+  async createPatient( newPatient: Patient) {
+    const patient = this.patientRepository.create({
+      ...newPatient, 
+    });
+       return this.patientRepository.save(patient);
     }
+   
     async getPatientById(id: number) {
       return this.patientRepository.findOne({ where: { id }});
     }
@@ -26,7 +29,7 @@ export class PatientService {
     async updatePatient(id: number, newPatient: Patient): Promise<Patient> {
       const patient = await this.getPatientById(id);
       this.patientRepository.merge(patient, newPatient);
-      return this.patientsRepository.save(Patient);
+      return this.patientRepository.save(patient);
     }
   
     async deletePatient(id: number): Promise<void> {

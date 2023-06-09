@@ -4,7 +4,6 @@ import { DoctorsService } from './doctors.service';
 
 @Controller('doctors')
 export class DoctorsController {
-  doctorRepository: any;
   constructor(private readonly doctorsService: DoctorsService) {}
 
   @Post()

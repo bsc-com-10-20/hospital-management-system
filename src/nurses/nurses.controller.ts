@@ -4,7 +4,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 
   @Controller('nurses')
 export class NursesController {
-  nurseRepository: any;
+  
   constructor(private readonly nursesService: NursesService) {}
 
   @Post()

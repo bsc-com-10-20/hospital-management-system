@@ -5,9 +5,8 @@ import { Hrm } from './entities/hrm.entity';
 
 @Controller('hrm')
 export class hrmController {
-  hrmRepository: any;
-  hrmService: any;
-  constructor(private readonly hrmsService: HrmService) {}
+  
+  constructor(private readonly hrmService: HrmService) {}
 
   @Post()
   async createHrm(@Body() newHrm: Hrm): Promise<Hrm> {
@@ -23,7 +22,7 @@ export class hrmController {
   async updateHrm(@Param('id') id: number,
   @Body() newHrm: Hrm,
   ): Promise<Hrm>{
-    return this.hrmsService.updateHrm(id, newHrm);
+    return this.hrmService.updateHrm(id, newHrm);
   }
 
   @Delete(':id')
