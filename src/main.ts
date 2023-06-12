@@ -8,7 +8,7 @@ async function bootstrap() {
   
  
   const config = new DocumentBuilder()
-  .setTitle('Hospital Management System')
+  .setTitle('hospital-management-system')
   .setDescription('Our description goes here.....')
   .setVersion('1.0')
   .addTag('Developed By Rizzle')
