@@ -22,7 +22,7 @@ import { DoctorsModule } from './doctors/doctors.module';
   // subscribers:[],
   // retryAttempts:6,
   autoLoadEntities:true,
-    synchronize: false,
+    synchronize: true,
   }),
 
     AccountantModule, AdminModule, NursesModule, PatientsModule, ReceptionistModule, HrmModule, DoctorsModule],
