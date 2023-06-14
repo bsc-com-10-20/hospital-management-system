@@ -4,7 +4,6 @@ import { Receptionist } from './entities/receptionist.entity';
 import { Repository } from 'typeorm';
 
  
-
  @Injectable()
  export class ReceptionistService {
    constructor( @InjectRepository(Receptionist)
